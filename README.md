@@ -9,7 +9,7 @@ The dashboard provides:
 **Exploratory Data Analysis (Interactive Visualizations & Tables)**  
 
 ## **Installation Instructions**
-To run the application locally, follow these steps:
+To run the application locally, follow these steps in terminal:
 
 ### **1. Clone the Repository**
 ```
@@ -37,3 +37,4 @@ pip install -r requirements.txt
 shiny run app.py
 ```
 Once running, visit http://127.0.0.1:8000 in your web browser.
+Ctrl + C in Terminal to quit application.

@@ -1,12 +1,24 @@
+
+.DS_Store
+
+.ipynb_checkpoints/
+
 .venv/
 venv/
+
+.vscode/
+*.code-workspace
+
+*.anaconda
+*.conda
+*.RData
+*.Rhistory
 
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-.vscode/
-
-.DS_Store
-Thumbs.db
+logs/
+*.log
+cache/

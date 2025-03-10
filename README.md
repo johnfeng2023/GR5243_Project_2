@@ -32,7 +32,7 @@ python -m venv .venv
 ```
 pip install -r requirements.txt
 ```
-### **4. Run the Applicatoin**
+### **4. Run the Application**
 ```
 shiny run app.py
 ```

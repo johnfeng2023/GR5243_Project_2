@@ -1,83 +1,62 @@
 import seaborn as sns  # Import Seaborn for data visualization
 from faicons import icon_svg  # Import FontAwesome icons for UI elements
-
-# Import data from shared.py
-from shared import app_dir, df
-
+from shared import app_dir, load_dataset  # Import dataset loader function
+import pandas as pd
 from shiny import reactive  # Import reactive utilities for interactivity
 from shiny.express import input, render, ui  # Import Shiny Express for UI and rendering
 
+ui.page_opts(title="Data Analysis Dashboard", fillable=True)  # Set the title of the dashboard
 
-ui.page_opts(title="Penguins dashboard", fillable=True) # Set the title of the dashboard
+# Sidebar for dataset upload and filters
+with ui.sidebar(title="Dataset Upload & Filters"):
+    # File Upload Input
+    ui.input_file("uploaded_file", "Upload a Dataset", accept=[".csv", ".xlsx", ".json", ".rds"])
 
-#Creates a sidebar with filters.
-with ui.sidebar(title="Filter controls"):
-    ui.input_slider("mass", "Mass", 2000, 6000, 6000) #Creates a slider input for filtering by mass (default max 6000g).
-    ui.input_checkbox_group(
-        "species",
-        "Species",
-        ["Adelie", "Gentoo", "Chinstrap"],
-        selected=["Adelie", "Gentoo", "Chinstrap"],
-    )
+    # # Placeholder filters (these will be updated dynamically in future steps)
+    # ui.input_slider("mass", "Mass", 2000, 6000, 6000)
+    # ui.input_checkbox_group(
+    #     "species",
+    #     "Species",
+    #     ["Adelie", "Gentoo", "Chinstrap"],
+    #     selected=["Adelie", "Gentoo", "Chinstrap"],
+    # )
 
+# **Reactive function to load dataset**
+@reactive.calc
+def dataset():
+    """Loads the dataset reactively when a new file is uploaded."""
+    uploaded_file = input.uploaded_file()
+    if uploaded_file:
+        return load_dataset(uploaded_file[0]["datapath"])  # Load user-uploaded file
+    return load_dataset()  # Use default dataset if no file is uploaded
 
-with ui.layout_column_wrap(fill=False):  # Wraps value boxes in a responsive layout
-    with ui.value_box(showcase=icon_svg("earlybirds")):  # Displays an icon with a label
-        "Number of penguins"
+# **Creates a responsive layout for value boxes**
+with ui.layout_column_wrap(fill=False):
+    with ui.value_box(showcase=icon_svg("earlybirds")):
+        "Number of rows in dataset"
 
         @render.text
         def count():
-            return filtered_df().shape[0]  # Displays the number of filtered penguins
+            return dataset().shape[0]  # Displays the number of rows in the dataset
 
     with ui.value_box(showcase=icon_svg("ruler-horizontal")):
-        "Average bill length"
+        "Number of columns"
 
         @render.text
-        def bill_length():
-            return f"{filtered_df()['bill_length_mm'].mean():.1f} mm"  # Displays average bill length
+        def column_count():
+            return dataset().shape[1]  # Displays the number of columns
 
-    with ui.value_box(showcase=icon_svg("ruler-vertical")):
-        "Average bill depth"
-
-        @render.text
-        def bill_depth():
-            return f"{filtered_df()['bill_depth_mm'].mean():.1f} mm"  # Displays average bill depth
-
-
-
-with ui.layout_columns():  # Creates a column layout for plots and data tables
-    with ui.card(full_screen=True):  # A card containing a scatter plot
-        ui.card_header("Bill length and depth")
-
-        @render.plot
-        def length_depth():
-            return sns.scatterplot(
-                data=filtered_df(),
-                x="bill_length_mm",
-                y="bill_depth_mm",
-                hue="species",
-            )
-
-    with ui.card(full_screen=True):  # A card for the data table
-        ui.card_header("Penguin data")
+# **Column layout for plots and data tables**
+with ui.layout_columns():
+    with ui.card(full_screen=True):
+        ui.card_header("Data Preview")
 
         @render.data_frame
-        def summary_statistics():
-            cols = [
-                "species",
-                "island",
-                "bill_length_mm",
-                "bill_depth_mm",
-                "body_mass_g",
-            ]
-            return render.DataGrid(filtered_df()[cols], filters=True)  # Displays a table with filtering enabled
+        def data_preview():
+            df = dataset()  # Load dataset
+            df.columns = df.columns.astype(str)  # Ensure column names are strings
+            return render.DataGrid(df, filters=False, selection_mode="none")
 
-# Loads a custom CSS file (styles.css) to modify the appearance of the dashboard.
+
+# **Load custom CSS file**
 ui.include_css(app_dir / "styles.css")
-
-
-@reactive.calc
-def filtered_df():
-    filt_df = df[df["species"].isin(input.species())]
-    filt_df = filt_df.loc[filt_df["body_mass_g"] < input.mass()]
-    return filt_df

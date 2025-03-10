@@ -1,3 +1,50 @@
 :root {
   --bslib-sidebar-main-bg: #f8f8f8;
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --light-bg: #ffffff;
+  --dark-text: #333;
+  --hover-bg: #e9ecef;
 }
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--bslib-sidebar-main-bg);
+  padding: 15px;
+  border-right: 1px solid #ddd;
+}
+
+/* Buttons */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: var(--hover-bg);
+  color: var(--primary-color);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #ffffff !important;
+  color: black !important;
+  font-weight: bold !important;
+}
+
+

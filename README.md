@@ -29,6 +29,7 @@ python -m venv .venv
 ```
 
 ### **3. Install Dependencies**
+**For reading in .rds files, you need to install `xz`, then install `pyreadr`.**
 ```
 pip install -r requirements.txt
 ```

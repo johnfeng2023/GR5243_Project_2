@@ -29,10 +29,32 @@ python -m venv .venv
 ```
 
 ### **3. Install Dependencies**
-**For reading in .rds files, you need to install `xz`, then install `pyreadr`.**
 ```
 pip install -r requirements.txt
 ```
+
+### 3.5 .rds File Dependency
+**Note**: For reading in .rds files, library `pyreadr` is required. If you encounter the error of `lzma.h` not found, then you need to install `xz` before installing `pyreadr`.
+
+MacOS only:
+```
+brew install xz
+```
+Verify Installation:
+```
+ls /usr/local/include/lzma.h  # For Intel Macs
+ls /opt/homebrew/include/lzma.h  # For Apple Silicon (M1/M2)
+```
+Manually specify library paths and install `pyreadr`:
+```
+CFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/lib" pip install pyreadr # For Intel Macs
+CFLAGS="-I/opt/homebrew/include" LDFLAGS="-L/opt/homebrew/lib" pip install pyreadr # For Apple Silicon (M1/M2)
+```
+After manually installying pyreadr, install dependencies in requirements.txt again:
+```
+pip install -r requirements.txt
+```
+
 ### **4. Run the Application**
 ```
 shiny run app.py

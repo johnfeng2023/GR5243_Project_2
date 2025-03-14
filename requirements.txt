@@ -1,5 +1,7 @@
 faicons
 shiny
+shinywidgets
+statsmodels
 seaborn
 pandas
 numpy

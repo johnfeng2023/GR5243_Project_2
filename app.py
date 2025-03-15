@@ -1,4 +1,4 @@
-import seaborn as sns  # Import Seaborn for data visualization
+import seaborn as sns
 from faicons import icon_svg  # Import FontAwesome icons for UI elements
 from shared import app_dir, load_dataset  # Import dataset loader function
 import pandas as pd
@@ -19,15 +19,6 @@ ui.page_opts(title="Data Analysis Dashboard", fillable=True)  # Set the title of
 with ui.sidebar(title="Dataset Upload & Filters"):
     # File Upload Input
     ui.input_file("uploaded_file", "Upload a Dataset", accept=[".csv", ".xlsx", ".json", ".rds"])
-
-    # # Placeholder filters (these will be updated dynamically in future steps)
-    # ui.input_slider("mass", "Mass", 2000, 6000, 6000)
-    # ui.input_checkbox_group(
-    #     "species",
-    #     "Species",
-    #     ["Adelie", "Gentoo", "Chinstrap"],
-    #     selected=["Adelie", "Gentoo", "Chinstrap"],
-    # )
 
 # **Reactive function to load dataset**
 @reactive.calc

@@ -34,7 +34,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 3.5 .rds File Dependency
+### 3.1 .rds File Dependency
 **Note**: For reading in .rds files, library `pyreadr` is required. If you encounter the error of `lzma.h` not found, then you need to install `xz` before installing `pyreadr`.
 
 MacOS only:

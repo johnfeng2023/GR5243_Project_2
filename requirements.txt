@@ -1,4 +1,5 @@
 faicons
+Jinja2
 shiny
 shinywidgets
 statsmodels

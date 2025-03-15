@@ -1,7 +1,8 @@
 # GR5243_Project_2
 ## Project Overview
 The web application is built using Shiny for Python and allows users to upload, clean, explore, and visualize datasets interactively. The application supports different file formats and provides a built-in dataset for demonstration.
-This repository will contain 3 .py files that have different functionalities:
+
+The following 3 .py are contains the funcationalities for data analysis:
 
 **[app.py](app.py): Dataset Upload and Exploratory Data Analysis**
 
@@ -75,12 +76,12 @@ Ctrl + C in Terminal to quit application.
 
 ## Files
 - [app.py](app.py) – The main script for running the web application, integrating various functionalities like dataset uploading, preprocessing, feature engineering, and EDA.
-- [data_preprocessing.py](data_preprocessing.py) – Contains functions for cleaning and preprocessing datasets, such as handling missing values, outliers, and scaling transformations.
-- [feature.py](feature.py) – Implements feature engineering functions, including log transformations, polynomial expansions, and categorical encoding.
-- [penguins.csv](penguins.csv) – A sample dataset included for demonstration purposes, allowing users to test the application without uploading their own data.
-- [requirements.txt](requirements.txt) – Lists all dependencies required to run the application, ensuring easy installation using pip install -r requirements.txt.
-- [shared.py](share.py) – Provides shared utility functions used across different scripts, such as file handling, validation, or common preprocessing tasks.
-- [styles.css](styles.css) – Defines the styling for the web application, ensuring a clean and user-friendly interface.
+- [data_preprocessing.py](data_preprocessing.py) – Contains functions for cleaning and preprocessing datasets. (Missing values, outliers,transformations,etc.)
+- [feature.py](feature.py) – Implements feature engineering functions.(Log transformations, polynomial expansions, and categorical encoding)
+- [penguins.csv](penguins.csv) – A sample dataset included for demonstration purposes.
+- [requirements.txt](requirements.txt) – Lists all dependencies required to run the application.
+- [shared.py](share.py) – Provides shared utility functions used across different scripts.
+- [styles.css](styles.css) – Defines the styling for the web application for clean and user-friendly interface.
 ---
 
 ## Team Contributions

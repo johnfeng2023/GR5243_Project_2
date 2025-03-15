@@ -1,12 +1,13 @@
 # GR5243_Project_2
 ## Project Overview
-This web application is built using Shiny for Python and allows users to **upload, clean, explore, and visualize datasets interactively**. The application supports different file formats and provides a built-in dataset for demonstration.
-The dashboard provides:
+The web application is built using Shiny for Python and allows users to upload, clean, explore, and visualize datasets interactively. The application supports different file formats and provides a built-in dataset for demonstration.
+This repository will contain 3 .py files that have different functionalities:
 
-**Dataset Upload & Selection**  
-**Data Cleaning (Handle Missing Values, Remove Duplicates, etc.)**  
-**Feature Engineering (Create New Features, Drop Columns)**  
-**Exploratory Data Analysis (Interactive Visualizations & Tables)**  
+**[app.py](app.py): Dataset Upload and Exploratory Data Analysis**
+
+**[data_preprocessing.py](data_preprocessing.py): Data Cleaning and preprocessing**
+
+**[feature.py](feature.py): Feature Engineering**
 
 ## **Installation Instructions**
 To run the application locally, follow these steps in terminal:
@@ -56,8 +57,38 @@ pip install -r requirements.txt
 ```
 
 ### **4. Run the Application**
+**app.py**:
 ```
 shiny run app.py
 ```
+**data_preprocessing.py**
+````
+shiny run data_preprocessing.py
+````
+**feature.py**
+```
+shiny run feature.py
+```
+
 Once running, visit http://127.0.0.1:8000 in your web browser.
 Ctrl + C in Terminal to quit application.
+
+## Files
+- [app.py](app.py) – The main script for running the web application, integrating various functionalities like dataset uploading, preprocessing, feature engineering, and EDA.
+- [data_preprocessing.py](data_preprocessing.py) – Contains functions for cleaning and preprocessing datasets, such as handling missing values, outliers, and scaling transformations.
+- [feature.py](feature.py) – Implements feature engineering functions, including log transformations, polynomial expansions, and categorical encoding.
+- [penguins.csv](penguins.csv) – A sample dataset included for demonstration purposes, allowing users to test the application without uploading their own data.
+requirements.txt – Lists all dependencies required to run the application, ensuring easy installation using pip install -r requirements.txt.
+- [shared.py](share.py) – Provides shared utility functions used across different scripts, such as file handling, validation, or common preprocessing tasks.
+- [styles.css](styles.css) – Defines the styling for the web application, ensuring a clean and user-friendly interface.
+---
+
+## Team Contributions
+
+| Task                        | Contributor       |
+|-----------------------------|------------------|
+| **Data Uploading**        | John Feng       |
+| **Data Preprocessing** | Mei Yue       |
+| **Feature Engineering**      | Jiaheng Zhang       |
+| **Exploratory Data Analysis**     | Zhuoxuan Li     |
+

@@ -63,7 +63,7 @@ shiny run app.py
 ```
 **data_preprocessing.py**
 ````
-shiny run data_preprocessing.py
+python data_preprocessing.py
 ````
 **feature.py**
 ```

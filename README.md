@@ -78,7 +78,7 @@ Ctrl + C in Terminal to quit application.
 - [data_preprocessing.py](data_preprocessing.py) – Contains functions for cleaning and preprocessing datasets, such as handling missing values, outliers, and scaling transformations.
 - [feature.py](feature.py) – Implements feature engineering functions, including log transformations, polynomial expansions, and categorical encoding.
 - [penguins.csv](penguins.csv) – A sample dataset included for demonstration purposes, allowing users to test the application without uploading their own data.
-requirements.txt – Lists all dependencies required to run the application, ensuring easy installation using pip install -r requirements.txt.
+- [requirements.txt](requirements.txt) – Lists all dependencies required to run the application, ensuring easy installation using pip install -r requirements.txt.
 - [shared.py](share.py) – Provides shared utility functions used across different scripts, such as file handling, validation, or common preprocessing tasks.
 - [styles.css](styles.css) – Defines the styling for the web application, ensuring a clean and user-friendly interface.
 ---
